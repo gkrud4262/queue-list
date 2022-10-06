@@ -54,17 +54,17 @@ void ResetQueue(Queue *queue){ // 큐의 저장된 모든 노드를 리셋하고
 void dequeue(Queue *queue, int num){
     Node *cur;
     Node *tmp;
-     cur = queue->front; //가장 마지막에 들어온 추가된 노드, z큐의 제일 위에 노드
+     cur = queue->front; //가장 마지막에 들어온 추가된 노드, 큐의 제일 위에 노드
     int size = queue->size;
-    puts("");
+    printf("");
     while(num--){
         if(cur == NULL){
-            puts("Queue is now empty.\n");
+            printf("Score Queue box is now empty.\n");
             break;
 
         }
         else{
-            printf("Deleted queue (%d) data = %d.\n", size +1 - (queue->size--), cur->data);
+            printf("Deleted score queue (%d) data = %d.\n", size +1 - (queue->size--), cur->data);
             // 데이터를 반환한 노드의 메모리를 해제하는 부분은 위에 ResetQueue와 동일
             tmp = cur->next;  //Add에서 Queue->rear->next = tmp; 해줬던 부분
             free(cur);
@@ -77,24 +77,24 @@ void PrintQueue(Queue *queue){ // 큐의 모든 데이터를 출력
     Node *tmp = (Node *)malloc(sizeof(Node));
     tmp = queue->front;
     int size = queue->size-1;
-    printf("\n Add queue starts.");
+    printf("\n Put score queue starts.");
     while(tmp != NULL){
-        printf("Queue (%d) data = %d\n", queue->size-(size--), tmp->data);
+        printf("Score Queue (%d) data = %d\n", queue->size-(size--), tmp->data);
         tmp = tmp->next;
 
     }
-    printf("Add enqueue is complete.");
+    printf("Score enqueue is complete.");
 
 }
 int main(int argc, const char * argv[]) {
     Queue *queue = InitQueue();
-    enqueue(queue, 20);
-    enqueue(queue, 21);
-    enqueue(queue, 22);
+    enqueue(queue, 60);
+    enqueue(queue, 74);
+    enqueue(queue, 85);
     PrintQueue(queue);
-    enqueue(queue, 30);
-    enqueue(queue, 31);
-    enqueue(queue, 32);
+    enqueue(queue, 87);
+    enqueue(queue, 90);
+    enqueue(queue, 95);
     PrintQueue(queue);
     dequeue(queue, 1);
     dequeue(queue, 2);
